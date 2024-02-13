@@ -10,7 +10,7 @@ Summary(pl.UTF-8):	Biblioteka Oslo Context
 Name:		python-oslo.context
 # keep 2.x here for python2 support
 Version:	2.23.1
-Release:	1
+Release:	2
 License:	Apache v2.0
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/oslo.context/
@@ -118,10 +118,13 @@ rm -rf $RPM_BUILD_ROOT
 %py_install
 
 %py_postclean
+%{__rm} -r $RPM_BUILD_ROOT%{py_sitescriptdir}/oslo_context/tests
 %endif
 
 %if %{with python3}
 %py3_install
+
+%{__rm} -r $RPM_BUILD_ROOT%{py3_sitescriptdir}/oslo_context/tests
 %endif
 
 %clean
